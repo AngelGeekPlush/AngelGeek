@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angel Geek</title>
+    <link rel="icon" href="imagenes/Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="Estilos/cssemergente.css">
+    <link rel="stylesheet" href="Estilos/estilos.css">
+    <!--Icon-Font-->
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f55d0327e8.js" crossorigin="anonymous"></script>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            cursor: grab;
+            background: url('imagenes/Mapa-001_Low.webp') no-repeat center center;
+            background-size: contain;
+            transition: background-size 0.25s ease, background-position 0.25s ease;
+            background-color: #3f321e;
+        }
+
+        .grabbing {
+            cursor: grabbing;
+        }
+
+        .cloud {
+            position: absolute;
+            background-size: contain;
+            width: 600px; /* Tamaño de las nubes */
+            height: 600px; /* Tamaño de las nubes */
+        }
+
+        .cloud1 {
+            background-image: url('imagenes/Nube-01.webp'); /* Imagen de nube 1 */
+            animation: moveCloud1 5s ease-in-out infinite;
+            left: 60%; /* Posición inicial ajustada */
+            top: 70%; /* Posición inicial ajustada */
+        }
+
+        .cloud2 {
+            background-image: url('imagenes/Nube-02.webp'); /* Imagen de nube 2 */
+            animation: moveCloud2 8s ease-in-out infinite;
+            left: 60%; /* Posición inicial ajustada */
+            top: 50%; /* Posición inicial ajustada */
+        }
+
+        .cloud3 {
+            background-image: url('imagenes/Nube-02.webp'); /* Imagen de nube 3 */
+            animation: moveCloud3 10s ease-in-out infinite;
+            left: 50%; /* Posición inicial ajustada */
+            top: 50%; /* Posición inicial ajustada */
+        }
+
+        .cloud4 {
+            background-image: url('imagenes/Nube-03.webp'); /* Imagen de nube 4 */
+            animation: moveCloud4 5s ease-in-out infinite;
+            left: 90%; /* Posición inicial ajustada */
+            top: 80%; /* Posición inicial ajustada */
+        }
+
+        .cloud5 {
+            background-image: url('imagenes/Nube-03.webp'); /* Imagen de nube 5 */
+            animation: moveCloud5 8s ease-in-out infinite;
+            left: 30%; /* Posición inicial ajustada */
+            top: 80%; /* Posición inicial ajustada */
+        }
+
+        @keyframes moveCloud1 {
+            0% { left: 50%; top: 50%; transform: translate(-50%, -50%); }
+            50% { left: 30%; top: 30%; transform: translate(-50%, -50%); }
+            100% { left: 0; top: 0; transform: translate(-50%, -50%); }
+        }
+
+        @keyframes moveCloud2 {
+            0% { left: 30%; top: 30%; transform: translate(-50%, -50%); }
+            50% { left: 90%; top: 10%; transform: translate(-50%, -50%); }
+            100% { left: 100%; top: 0; transform: translate(-50%, -50%); }
+        }
+
+        @keyframes moveCloud3 {
+            0% { left: 50%; top: 50%; transform: translate(-50%, -50%); }
+            50% { left: 10%; top: 90%; transform: translate(-50%, -50%); }
+            100% { left: 0; top: 100%; transform: translate(-50%, -50%); }
+        }
+
+        @keyframes moveCloud4 {
+            0% { left: 70%; top: 40%; transform: translate(-50%, -50%); }
+            50% { left: 90%; top: 90%; transform: translate(-50%, -50%); }
+            100% { left: 100%; top: 100%; transform: translate(-50%, -50%); }
+        }
+
+        @keyframes moveCloud5 {
+            0% { left: 60%; top: 40%; transform: translate(-50%, -50%); }
+            50% { left: 10%; top: 10%; transform: translate(-50%, -50%); }
+            100% { left: 0; top: 0; transform: translate(-50%, -50%); }
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(63, 50, 30, 0.8); /* color de fondo cielo */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            overflow: hidden;
+            transition: opacity 2s ease-out;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none; /* Permite interactuar con el contenido detrás */
+        }
+
+       
+
+        .reset-button {
+            position: absolute;
+            bottom: 10px;
+            left: 10px; /* Ajustado a la esquina inferior izquierda */
+            padding: 10px 20px;
+            background-color: #806a46;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 50px;
+            color: #fff;
+            box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .reset-button:hover {
+            background-color: #be202f;
+            transform: translateX(0.15em);
+        }
+
+        nav {
+            float: left;
+            border-radius: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        nav ul li a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        nav ul li:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        nav > ul > li {
+            float: left;
+        }
+
+        ul.menu li ul {
+            background-color: #806a46;
+            display: none;
+            position: absolute;
+            min-width: 50px;
+            opacity: 0.75;
+        }
+
+        ul.menu li:hover ul {
+            display: block;
+        }
+
+        .zoom-control {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 100;
+        }
+
+        .zoom-control input {
+            width: 100px;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 10px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            border-radius: 5px;
+        }
+
+        .zoom-control input:hover {
+            opacity: 1;
+        }
+
+        .zoom-control input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #be202f;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .zoom-control input::-moz-range-thumb {
+            width: 15px;
+            height: 15px;
+            background: #be202f;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        @media screen and (max-width: 768px) {
+            .reset-button {
+                padding: 8px 16px;
+                font-size: 14px;
+                bottom: 20px;
+                left: 10px; /* Ajuste adicional para pantallas más pequeñas */
+            }
+
+            nav ul li a {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .reset-button {
+                padding: 6px 12px;
+                font-size: 12px;
+                bottom: 15px;
+                left: 5px; /* Ajuste adicional para pantallas muy pequeñas */
+            }
+
+            nav ul li a {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="loading-icon"></div>
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+        <div class="cloud cloud4"></div>
+        <div class="cloud cloud5"></div>
+    </div>
+
+    <div id="emergente" class="emergente hidden">
+        <div class="emergente-content">
+            <span class="close-btn">&times;</span>
+            <h1>¡Bienvenido a Angel Geek!</h1>
+            <p>Te invitamos a explorar este fantastico mundo, puedes acercarte para ver mejor los detalles <br> <h2>En pc</h2>  Acercate con el scroll de tu mouse o con las teclas  + y - para ver los detalles, desplazate con el clic derecho de tu mouse <br><h2>En celular</h2> Acercate con la barra en la esquina superior derecha y desplazate por la pantalla como gustes<br> Puedes volver todo a la normalidad con el botón de reset.</p>
+            <p>Navega por el menú para acceder a los diferentes mundos.</p>
+            <button class="close-emergente">Entendido</button>
+        </div>
+    </div>
+
+    <button class="reset-button" onclick="resetBackground()">Reset</button>
+
+    <header class="hidden">
+        <nav>
+            <ul class="menu">
+                <li><a href="#"><img src="imagenes/Boton Menu.png" id="menu-imagen" width="40px" height="40px"></a>
+                    <ul>
+                        <li><a href="mundos/Sweet_Nigthmare.html">SWEET NIGTHMARE</a></li>
+                        <li><a href="mundos/Comidin.html">COMIDIN</a></li>
+                        <li><a href="mundos/Mundo maritimo.html">MARES CORRUPTOS</a></li>
+                        <li><a href="mundos/Electrin.html">ELECTRIN</a></li>
+                        <li><a href="mundos/Mundo salvaje.html">TIERRA SALVAJE</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container hidden">
+        <input type="checkbox" id="btn-mas">
+        <div class="redes">
+            <a href="https://www.facebook.com/angelgeekplush" class="fa fa-facebook" target="_blank"></a>
+            <a href="https://www.instagram.com/talesofangelgeek/" class="fa fa-instagram" target="_blank"></a>
+            <a href="https://wa.me/message/74L5JB2GZNJIB1" class="fa fa-whatsapp" target="_blank"></a>
+            <a href="https://wa.me/c/573158494391" class="fa-solid fa-cart-shopping" target="_blank"></a>
+        </div>
+        <div class="btn-mas">
+            <label for="btn-mas" class="fa fa-plus"></label>
+        </div>
+    </div>
+
+    <div class="zoom-control">
+        <input type="range" min="100" max="1000" value="500" class="slider" id="zoomRange">
+    </div>
+
+    <script src="Js/scriptemergente.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loading-screen').style.opacity = '0';
+                setTimeout(function() {
+                    document.querySelector('.loading-screen').style.display = 'none';
+                    document.querySelectorAll('.hidden').forEach(function(el) {
+                        el.classList.remove('hidden');
+                    });
+                }, 1000); // Retraso adicional para ocultar la pantalla de carga
+            }, 1000); // 1 segundo de carga simulada (puedes ajustar esto según sea necesario)
+        });
+
+        let scale = 1;
+        let originX = 0;
+        let originY = 0;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let timeout;
+
+        const minSize = 0.5; // Escala mínima permitida 
+const maxSize = 2.0; // Escala máxima permitida  
+
+        function updateBackgroundPosition(dx, dy) {
+            originX += dx;
+            originY += dy;
+            document.body.style.backgroundPosition = `${originX}px ${originY}px`;
+        }
+
+        document.body.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const delta = e.deltaY > 0 ? -0.1 : 0.1;
+            scale += delta;
+            scale = Math.max(scale, minSize / Math.max(document.body.clientWidth, document.body.clientHeight));
+            document.body.style.backgroundSize = `${scale * 100}%`;
+        });
+
+        document.body.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+            document.body.classList.add('grabbing');
+        });
+
+        document.body.addEventListener('mouseup', () => {
+            isDragging = false;
+            document.body.classList.remove('grabbing');
+            clearTimeout(timeout);
+        });
+
+        document.body.addEventListener('mouseleave', () => {
+            if (isDragging) {
+                isDragging = false;
+                document.body.classList.remove('grabbing');
+                clearTimeout(timeout);
+            }
+        });
+
+        document.body.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    const dx = e.clientX - startX;
+                    const dy = e.clientY - startY;
+                    updateBackgroundPosition(dx, dy);
+                    startX = e.clientX;
+                    startY = e.clientY;
+                }, 10); // Ajuste el valor de tiempo según sea necesario para la suavidad deseada
+            }
+        });
+        function resetBackground() {
+    scale = 1; // Restablecer el tamaño de zoom al 100%
+    originX = 0; // Restablecer la posición X
+    originY = 0; // Restablecer la posición Y
+    document.body.style.backgroundSize = 'contain';
+    document.body.style.backgroundPosition = 'center';
+    
+    // Actualizar la barra de zoom (zoomRange)
+    const zoomRange = document.getElementById('zoomRange');
+    zoomRange.value = 500; // Establecer el valor inicial de zoom (500 es el valor medio)
+}
+document.querySelector('.reset-button').addEventListener('click', () => {
+    resetBackground();
+});
+        document.querySelector('.reset-button').addEventListener('click', () => {
+            scale = 1;
+            originX = 0;
+            originY = 0;
+            document.body.style.backgroundSize = 'contain';
+            document.body.style.backgroundPosition = 'center';
+            document.getElementById('zoomRange').value = 100;
+        });
+
+        // Control de zoom con la barra deslizante
+        document.getElementById('zoomRange').addEventListener('input', function() {
+            const zoomValue = parseInt(this.value) / 100;
+            scale = zoomValue;
+            document.body.style.backgroundSize = `${scale * 100}%`;
+        });
+
+        // Soporte para gestos táctiles
+        let touchStartDistance = 0;
+        let initialScale = scale;
+        let initialTouchX = 0;
+        let initialTouchY = 0;
+
+        document.body.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 2) {
+                touchStartDistance = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                initialScale = scale;
+            } else if (e.touches.length === 1) {
+                isDragging = true;
+                initialTouchX = e.touches[0].clientX;
+                initialTouchY = e.touches[0].clientY;
+            }
+        });
+
+        document.body.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 2) {
+                const touchMoveDistance = Math.hypot(
+                    e.touches[0].clientX - e.touches[1].clientX,
+                    e.touches[0].clientY - e.touches[1].clientY
+                );
+                const pinchScale = touchMoveDistance / touchStartDistance;
+                scale = Math.max(initialScale * pinchScale, minSize / Math.max(document.body.clientWidth, document.body.clientHeight));
+                document.body.style.backgroundSize = `${scale * 100}%`;
+            } else if (e.touches.length === 1 && isDragging) {
+                const dx = e.touches[0].clientX - initialTouchX;
+                const dy = e.touches[0].clientY - initialTouchY;
+                updateBackgroundPosition(dx, dy);
+                initialTouchX = e.touches[0].clientX;
+                initialTouchY = e.touches[0].clientY;
+            }
+        });
+
+        document.body.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        // Soporte para teclas + y - para zoom
+        document.body.addEventListener('keydown', (e) => {
+            if (e.key === '+') {
+                scale += 0.1;
+                document.body.style.backgroundSize = `${scale * 100}%`;
+            } else if (e.key === '-') {
+                scale -= 0.1;
+                scale = Math.max(scale, minSize / Math.max(document.body.clientWidth, document.body.clientHeight));
+                document.body.style.backgroundSize = `${scale * 100}%`;
+            }
+        });
+    </script>
+</body>
+</html>

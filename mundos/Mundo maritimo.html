@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angel Geek</title>
+    <link rel="icon" href="imagenes/Logo.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f55d0327e8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="Estilos/estilos.css">
+    <style>
+
+       
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3c2f1e;
+            overflow: hidden;
+        }
+        .menu {
+            position: absolute;
+            right: 5px;
+            top: 240px;
+            transform: translateY(-30%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-right: 15px;
+        }
+
+        .zoomable {
+            height: 80px;
+            width: 80px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+           
+        }
+
+        .zoomable:hover {
+            transform: scale(1.2);
+         
+        } 
+
+        .normal {
+            height:120px;
+            width: 120px;
+            position: absolute;
+            right: 5px;
+            top: 0;
+            margin-right: 5px;
+          
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            z-index: 1000;
+            border-radius: 10px;
+            
+            text-align: center;
+            max-width: 1250px;
+            max-height: 700px; /* Ancho máximo del popup */
+        }
+
+        .popup img {
+            max-width: 1250px;
+            max-height: 700px;
+            box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.6);
+            border-radius: 50px;
+        }
+
+        .popup .scrollable-content {
+            position: absolute;
+            top: 79%;
+            left: 53%;
+            transform: translate(-50%, -50%);
+            max-height: 200px; /* Altura máxima del área de desplazamiento */
+            overflow-y: scroll; /* Activar el desplazamiento vertical */
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            margin-bottom: 10px;
+            width: 320px;
+            height: 110px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            background: #be202f;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 20px;
+            z-index: 1;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .regresar {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #3c2f1e;
+            z-index: 1;
+        }
+        .home {
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #3c2f1e;
+            z-index: 1;
+        }
+
+       .home :hover{
+        transform: translateX(0.20em);
+
+       }
+
+       
+        /* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3c2f1e; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3c2f1e; 
+}
+
+ .responsive-image {  
+    max-width: 100%;  
+    height: auto;  
+    display: block;  
+    margin: 0 auto;  
+  }  
+
+  
+  img[src$=".webp"] {  
+  max-width: 380px; /* adjust the width to your desired value */  
+  height: auto;  
+  display: block;  
+  margin: 0 auto;  
+}  
+
+@media only screen and (max-width: 768px) {  
+ .regresar,.home {  
+    font-size: 12px;  
+  }  
+}  
+
+@media only screen and (max-width: 768px) {  
+ .zoomable {  
+    height: 40px;  
+    width: 40px;  
+  }  
+} 
+    </style>
+</head>
+<body>
+
+    <div><img class="normal" alt="intercambio de imagenes 1" src="imagenes/Boton Mares.webp" /></div>
+        <div class="menu">
+        
+        
+        <a href="Electrin.html"><img class="zoomable" alt="intercambio de imagenes 4" onmouseout="this.src='imagenes/Boton Electrin BN.webp'" onmouseover="this.src='imagenes/Boton Electrin.webp'" src="imagenes/Boton Electrin BN.webp" /></a>
+        <a href="Mundo salvaje.html"><img class="zoomable" alt="intercambio de imagenes 5" onmouseout="this.src='imagenes/Boton Salvajes BN.webp'" onmouseover="this.src='imagenes/Boton Salvajes.webp'" src="imagenes/Boton Salvajes BN.webp" /></a>
+        <a href="Sweet_Nigthmare.html"><img class="zoomable" alt="intercambio de imagenes 4" onmouseout="this.src='imagenes/Boton Sweet Nightmare BN.webp'" onmouseover="this.src='imagenes/Boton Sweet Nightmare.webp'" src="imagenes/Boton Sweet Nightmare BN.webp" /></a>
+        <a href="Comidin.html"><img class="zoomable" alt="intercambio de imagenes 2" onmouseout="this.src='imagenes/Boton Comidin BN.webp'" onmouseover="this.src='imagenes/Boton Comidin.webp'" src="imagenes/Boton Comidin BN.webp" /></a>
+    </div>
+    <button class="regresar" onclick="goBack()">
+        <img src="imagenes/Boton Volver.png" id="menu-volver" width="80px" height="80px" alt="Botón Volver">
+    </button>
+    <button class="home">
+        <a class="Imagen" href="../index.html">
+            <img src="imagenes/Boton-Home.png" id="menu-volver" width="80px" height="80px">
+        </a>
+    </button>
+    <svg viewBox="0 0 1920 1080" id="interactive-svg">
+        <image href="Mundo maritimo/Mares Corruptos.jpg" width="1920" height="1080" />
+        <defs>
+            <filter id="f1">
+                <feDropShadow dx="2" dy="2" stdDeviation="1" flood-opacity="0.5" />
+            </filter>
+        </defs>
+         <!-- Cambiar círculos a imágenes GIF -->
+         <image x="97" y="262" width="50" height="50" href="Mundo maritimo/Marcador-Mares.gif" class="clickable" data-image="Mundo maritimo/Tarjeta Rayas.webp" data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/> <!-- rayas -->
+         <image x="127" y="555" width="50" height="50" href="Mundo maritimo/Marcador-Mares.gif" class="clickable" data-image="Mundo maritimo/Tarjeta PezDiablo.webp" data-text="A causa de su extraño aspecto, la gente siempre le ha temido, por lo que suele ocultarse en los rincones más profundos. Sin embargo, en realidad es una persona muy amable y un hábil navegante. Durante las noches oscuras que enmascaran su apariencia, emerge a la superficie para ayudar con su luz a los marineros perdidos en los vastos mares de Angel Geek, guiándolos hacia su destino." filter="url(#f1)"/><!-- pez diablo -->
+         <image x="357" y="810" width="50" height="50" href="Mundo maritimo/Marcador-Mares.gif" class="clickable" data-image="Mundo maritimo/Tarjeta Meganibbles.webp" data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/> <!-- mega nibbles -->
+         <image x="438" y="909" width="50" height="50" href="Mundo maritimo/Marcador-Mares.gif" class="clickable" data-image="Mundo maritimo/Tarjeta MrNibbles.webp"data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/><!-- Mr nibbles -->
+         <image x="1572" y="828" width="50" height="50" href="Mundo maritimo/Marcador-Mares.gif" class="clickable" data-image="Mundo maritimo/Tarjeta Pulpisacha.webp" data-text="Conoce a la pulpisalchicha, uno de los mas valientes del oceano, carga con un cuchillo para defenderse de los depredadores y es el mas grande enemigo de Meganibbles." filter="url(#f1)"/><!-- Pulpi salchicha -->
+       
+     </svg>
+ 
+     <div class="popup" id="popup">
+         <button class="close-btn" onclick="closePopup()">x</button>
+         <img id="popup-img" src="Sweet Nigthmare/Tarjeta Condenado.png" alt="Imagen Secundaria">
+         <div class="scrollable-content" id="popup-text">
+             <p></p>
+         </div>
+     </div>
+     <div class="container">
+        <input type="checkbox" id="btn-mas">
+        <div class="redes">
+            <a href="https://www.facebook.com/angelgeekplush" class="fa fa-facebook" target="_blank"></a>
+            <a href="https://www.instagram.com/talesofangelgeek/" class="fa fa-instagram" target="_blank"></a>
+            <a href="https://wa.me/message/74L5JB2GZNJIB1" class="fa fa-whatsapp" target="_blank"></a>
+            <a href="https://wa.me/c/573158494391" class="fa-solid fa-cart-shopping" target="_blank"></a>
+        </div>
+        <div class="btn-mas">
+            <label for="btn-mas" class="fa fa-plus"></label>
+        </div>
+    </div>
+     <script>
+        function goBack() {
+        window.history.back();
+    }
+         document.querySelectorAll('.clickable').forEach(function(element) {
+             element.addEventListener('click', function() {
+                 const imgSrc = this.getAttribute('data-image');
+                 const textContent = this.getAttribute('data-text');
+                 const popup = document.getElementById('popup');
+                 const popupImg = document.getElementById('popup-img');
+                 const popupText = document.getElementById('popup-text').querySelector('p');
+                 
+                 popupImg.src = imgSrc;
+                 popupText.textContent = textContent;
+                 popup.style.display = 'block';
+             });
+         });
+ 
+         function closePopup() {
+             document.getElementById('popup').style.display = 'none';
+         }
+ 
+         document.body.addEventListener('click', function(event) {
+             const popup = document.getElementById('popup');
+             if (event.target.closest('.clickable') === null && event.target.closest('.popup') === null) {
+                 popup.style.display = 'none';
+             }
+         });
+     </script>
+ </body>
+ </html>

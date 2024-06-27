@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angel Geek</title>
+    <link rel="icon" href="imagenes/Logo.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f55d0327e8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="Estilos/estilos.css">
+    <style>
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3c2f1e;
+            overflow: hidden;
+        }
+        .menu {
+            position: absolute;
+            right: 5px;
+            top: 240px;
+            transform: translateY(-30%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-right: 15px;
+        }
+
+        .zoomable {
+            height: 80px;
+            width: 80px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+           
+        }
+
+        .zoomable:hover {
+            transform: scale(1.2);
+         
+        } 
+
+        .normal {
+            height:120px;
+            width: 120px;
+            position: absolute;
+            right: 5px;
+            top: 0;
+            margin-right: 5px;
+          
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            z-index: 1000;
+            border-radius: 10px;
+            
+            text-align: center;
+            max-width: 1250px;
+            max-height: 700px; /* Ancho máximo del popup */
+        }
+
+        .popup img {
+            max-width: 1250px;
+            max-height: 700px;
+            box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.6);
+            border-radius: 50px;
+        }
+
+        .popup .scrollable-content {
+            position: absolute;
+            top: 79%;
+            left: 53%;
+            transform: translate(-50%, -50%);
+            max-height: 200px; /* Altura máxima del área de desplazamiento */
+            overflow-y: scroll; /* Activar el desplazamiento vertical */
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            margin-bottom: 10px;
+            width: 320px;
+            height: 110px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            background: #be202f;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 20px;
+            z-index: 1;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .regresar {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #3c2f1e;
+            z-index: 1;
+        }
+        .home {
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #3c2f1e;
+            z-index: 1;
+        }
+
+       .home :hover{
+        transform: translateX(0.20em);
+
+       }
+
+       
+        /* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3c2f1e; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3c2f1e; 
+}
+
+ .responsive-image {  
+    max-width: 100%;  
+    height: auto;  
+    display: block;  
+    margin: 0 auto;  
+  }  
+
+  
+  img[src$=".webp"] {  
+  max-width: 380px; /* adjust the width to your desired value */  
+  height: auto;  
+  display: block;  
+  margin: 0 auto;  
+}  
+
+@media only screen and (max-width: 768px) {  
+ .regresar,.home {  
+    font-size: 12px;  
+  }  
+}  
+
+@media only screen and (max-width: 768px) {  
+ .zoomable {  
+    height: 40px;  
+    width: 40px;  
+  }  
+} 
+    </style>
+</head>
+<body>
+
+    <div><img class="normal" alt="intercambio de imagenes 1" src="imagenes/Boton Comidin.webp" /></div>
+        <div class="menu">
+        <a href="Mundo maritimo.html"><img class="zoomable" alt="intercambio de imagenes 3" onmouseout="this.src='imagenes/Boton Mares BN.webp'" onmouseover="this.src='imagenes/Boton Mares.webp'" src="imagenes/Boton Mares BN.webp" /></a>
+        <a href="Electrin.html"><img class="zoomable" alt="intercambio de imagenes 4" onmouseout="this.src='imagenes/Boton Electrin BN.webp'" onmouseover="this.src='imagenes/Boton Electrin.webp'" src="imagenes/Boton Electrin BN.webp" /></a>
+        <a href="Mundo salvaje.html"><img class="zoomable" alt="intercambio de imagenes 5" onmouseout="this.src='imagenes/Boton Salvajes BN.webp'" onmouseover="this.src='imagenes/Boton Salvajes.webp'" src="imagenes/Boton Salvajes BN.webp" /></a>
+        <a href="Sweet_Nigthmare.html"><img class="zoomable" alt="intercambio de imagenes 2" onmouseout="this.src='imagenes/Boton Sweet Nightmare BN.webp'" onmouseover="this.src='imagenes/Boton Sweet Nightmare.webp'" src="imagenes/Boton Sweet Nightmare BN.webp" /></a>
+    </div>
+    <button class="regresar" onclick="goBack()">
+        <img src="imagenes/Boton Volver.png" id="menu-volver" width="80px" height="80px" alt="Botón Volver">
+    </button>
+    
+    <button class="home">
+        <a class="Imagen" href="../index.html">
+            <img src="imagenes/Boton-Home.png" id="menu-volver" width="80px" height="80px">
+        </a>
+    </button>
+    <svg viewBox="0 0 1920 1080" id="interactive-svg">
+        <image href="Comidin/Comidin.webp" width="1920" height="1080" />
+        <defs>
+            <filter id="f1">
+                <feDropShadow dx="2" dy="2" stdDeviation="1" flood-opacity="0.5" />
+            </filter>
+        </defs>
+        <!-- Cambiar círculos a imágenes GIF -->
+        <image x="484" y="451" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-Sandwich.webp" data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/>
+        <image x="634" y="355" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-Lola.webp" data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/>
+        <image x="817" y="408" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-BigMike.webp" data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/>
+        <image x="778" y="495" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-HotDog.webp" data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/>
+        <image x="998" y="330" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-Bernardo-Nancy.webp" data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/>
+        <image x="1064" y="542" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-Cafesito.webp" data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/>
+        <image x="1179" y="474" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-Yemin-Eggtor.webp" data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/>
+        <image x="1207" y="289" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-Chocofresa.webp" data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/>
+        <image x="1065" y="423" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-Margarita.webp" data-text="Texto extenso para Spook." filter="url(#f1)"/>
+        <image x="1124" y="364" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-Jack.webp" data-text="Jack era un trozo de pizza que fue olvidado por accidente en la caja, día a día se fue dañando y perdiendo la conciencia hasta volverse un zombie, ahora va dañando al resto de las comidas en venganza por ser olvidado." filter="url(#f1)"/>
+        <image x="906" y="78" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-Ryan.webp" data-text="Ryan la piña es cool como ninguna otra, siente una gran atracción hacia la pizza pero es incapaz de decirlo ya que para muchos no es natural, le encanta el surf y odia los chistes de piñas coladas" filter="url(#f1)"/>
+        <image x="975" y="473" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif"class="clickable" data-image="Comidin/Tarjeta-Zanahoria.webp"data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/>
+        <image x="991" y="504" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-Aguacate.webp" data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/>
+        <image x="887" y="872" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-Sandy.webp" data-text="Sandy la sandia es una de las hijas de la gran sandia, ella siempre vive alegre y le encanta comer Hamburguesas." filter="url(#f1)"/>
+        <image x="1235" y="501" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-CarneManga.webp" data-text="En un mercado muy peculiar de villa comidin, había una carne manga tan tierna que era famosa por su jugosidad y su peculiaridad: ¡se podía sacar el hueso con carita feliz! Los chefs del lugar siempre contaban la leyenda de cómo esa carne había sido bendecida por una vieja bruja del bosque, quien le había otorgado esa cualidad especial para traer alegría a quienes la preparaban y la disfrutaban.Cada día, los clientes del mercado se maravillaban al ver cómo los chefs expertos en esta carne realizaban el ritual de extraer el hueso con sonrisa, asegurando que la carne fuera perfecta para la preparación. Era un espectáculo que no solo alimentaba los estómagos, sino también el espíritu de quienes lo presenciaban.
+
+        Así, la carne manga con su hueso de carita feliz se convirtió en la estrella indiscutible del mercado, uniendo a la gente en torno a su deliciosa y encantadora singularidad." filter="url(#f1)"/>
+        <image x="1160" y="332" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-Chocolatina.webp" data-text="En algún lugar de Villa Comidín, unos increíbles y exquisitos granos de cacao, conocidos por ser demasiado secos y amargos pero grandes exploradores, emprendieron uno de sus viajes. Durante su travesía, se encontraron con Lola, una dulce y tierna caja de leche. Juntos descubrieron que podían crear algo suave y delicioso: ¡Choco! Una gran chocolatina con una cubierta brillante destinada a conquistar los paladares más golosos y atraerlos con su irresistible aroma." filter="url(#f1)"/>
+        <image x="866" y="372" width="50" height="50" href="Comidin/Marcador-Hamburguesa.gif" class="clickable" data-image="Comidin/Tarjeta-Jean.webp" data-text="Historia en construcción , disculpa las molestias      (⁠٥⁠↼⁠_⁠↼⁠)" filter="url(#f1)"/>
+    </svg>
+
+    <div class="popup" id="popup">
+        <button class="close-btn" onclick="closePopup()">x</button>
+        <img id="popup-img" src="Sweet Nigthmare/Tarjeta Condenado.png" alt="Imagen Secundaria">
+        <div class="scrollable-content" id="popup-text">
+            <p></p>
+        </div>
+    </div>
+    <div class="container">
+        <input type="checkbox" id="btn-mas">
+        <div class="redes">
+            <a href="https://www.facebook.com/angelgeekplush" class="fa fa-facebook" target="_blank"></a>
+            <a href="https://www.instagram.com/talesofangelgeek/" class="fa fa-instagram" target="_blank"></a>
+            <a href="https://wa.me/message/74L5JB2GZNJIB1" class="fa fa-whatsapp" target="_blank"></a>
+            <a href="https://wa.me/c/573158494391" class="fa-solid fa-cart-shopping" target="_blank"></a>
+        </div>
+        <div class="btn-mas">
+            <label for="btn-mas" class="fa fa-plus"></label>
+        </div>
+    </div>
+    <script>
+        function goBack() {
+        window.history.back();
+    }
+        document.querySelectorAll('.clickable').forEach(function(element) {
+            element.addEventListener('click', function() {
+                const imgSrc = this.getAttribute('data-image');
+                const textContent = this.getAttribute('data-text');
+                const popup = document.getElementById('popup');
+                const popupImg = document.getElementById('popup-img');
+                const popupText = document.getElementById('popup-text').querySelector('p');
+                
+                popupImg.src = imgSrc;
+                popupText.textContent = textContent;
+                popup.style.display = 'block';
+            });
+        });
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        document.body.addEventListener('click', function(event) {
+            const popup = document.getElementById('popup');
+            if (event.target.closest('.clickable') === null && event.target.closest('.popup') === null) {
+                popup.style.display = 'none';
+            }
+        });
+
+        document.body.addEventListener('touchstart', function(event) {
+            const popup = document.getElementById('popup');
+            if (event.target.closest('.clickable') === null && event.target.closest('.popup') === null) {
+                popup.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

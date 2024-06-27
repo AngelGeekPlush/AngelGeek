@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angel Geek</title>
+    <link rel="icon" href="imagenes/Logo.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f55d0327e8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="Estilos/estilos.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3c2f1e;
+            overflow: hidden;
+        }
+        .menu {
+            position: absolute;
+            right: 5px;
+            top: 240px;
+            transform: translateY(-30%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-right: 15px;
+        }
+
+        .zoomable {
+            height: 80px;
+            width: 80px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+           
+        }
+
+        .zoomable:hover {
+            transform: scale(1.2);
+         
+        } 
+
+        .normal {
+            height:120px;
+            width: 120px;
+            position: absolute;
+            right: 5px;
+            top: 0;
+            margin-right: 5px;
+          
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            z-index: 1000;
+            border-radius: 10px;
+            
+            text-align: center;
+            max-width: 1250px;
+            max-height: 700px; /* Ancho máximo del popup */
+        }
+
+        .popup img {
+            max-width: 1250px;
+            max-height: 700px;
+            box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.6);
+            border-radius: 50px;
+        }
+
+        .popup .scrollable-content {
+            position: absolute;
+            top: 79%;
+            left: 53%;
+            transform: translate(-50%, -50%);
+            max-height: 200px; /* Altura máxima del área de desplazamiento */
+            overflow-y: scroll; /* Activar el desplazamiento vertical */
+            padding: 10px;
+            border-radius: 5px;
+            text-align: left;
+            margin-bottom: 10px;
+            width: 320px;
+            height: 110px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            background: #be202f;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 20px;
+            z-index: 1;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .regresar {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #3c2f1e;
+            z-index: 1;
+        }
+        .home {
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #3c2f1e;
+            z-index: 1;
+        }
+
+       .home :hover{
+        transform: translateX(0.20em);
+
+       }
+
+       
+        /* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3c2f1e; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3c2f1e; 
+}
+
+ .responsive-image {  
+    max-width: 100%;  
+    height: auto;  
+    display: block;  
+    margin: 0 auto;  
+  }  
+
+  
+  img[src$=".webp"] {  
+  max-width: 380px; /* adjust the width to your desired value */  
+  height: auto;  
+  display: block;  
+  margin: 0 auto;  
+}  
+
+@media only screen and (max-width: 768px) {  
+ .regresar,.home {  
+    font-size: 12px;  
+  }  
+}  
+
+@media only screen and (max-width: 768px) {  
+ .zoomable {  
+    height: 40px;  
+    width: 40px;  
+  }  
+} 
+    </style>
+</head>
+<body>
+    <div><img class="normal" alt="intercambio de imagenes 1" src="imagenes/Boton Sweet Nightmare.webp" /></div>
+        <div class="menu">
+        <a href="Comidin.html"><img class="zoomable" alt="intercambio de imagenes 2" onmouseout="this.src='imagenes/Boton Comidin BN.webp'" onmouseover="this.src='imagenes/Boton Comidin.webp'" src="imagenes/Boton Comidin BN.webp" /></a>
+        <a href="Mundo maritimo.html"><img class="zoomable" alt="intercambio de imagenes 3" onmouseout="this.src='imagenes/Boton Mares BN.webp'" onmouseover="this.src='imagenes/Boton Mares.webp'" src="imagenes/Boton Mares BN.webp" /></a>
+        <a href="Electrin.html"><img class="zoomable" alt="intercambio de imagenes 4" onmouseout="this.src='imagenes/Boton Electrin BN.webp'" onmouseover="this.src='imagenes/Boton Electrin.webp'" src="imagenes/Boton Electrin BN.webp" /></a>
+        <a href="Mundo salvaje.html"><img class="zoomable" alt="intercambio de imagenes 5" onmouseout="this.src='imagenes/Boton Salvajes BN.webp'" onmouseover="this.src='imagenes/Boton Salvajes.webp'" src="imagenes/Boton Salvajes BN.webp" /></a>
+        
+    </div>
+    <button class="regresar" onclick="goBack()">
+        <img src="imagenes/Boton Volver.png" id="menu-volver" width="80px" height="80px" alt="Botón Volver">
+    </button>
+
+    <button class="home">
+        <a class="Imagen" href="../index.html">
+            <img src="imagenes/Boton-Home.png" id="menu-volver" width="80px" height="80px">
+        </a>
+
+    </button>
+    <svg viewBox="0 0 1920 1080" id="interactive-svg">
+        <image href="Sweet Nigthmare/Sweet Nightmare.jpg" width="1920" height="1080" />
+        <defs>
+            <filter id="f1">
+                <feDropShadow dx="2" dy="2" stdDeviation="1" flood-opacity="0.5" />
+            </filter>
+        </defs>
+        <image  class="tarjetas"   x="616" y="481" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Cerebro.webp" loading="lazy" data-text="Cere- Bro , Solía ser un adorable conejo gordito y de largas orejas suaves llamado Bonnie amante de las zanahorias un día, en un intento de crear  la criatura más especia el Dr. Mortis usó el cuerpo de Bonnie para darle vida a Franky, colocando su cerebro en el nuevo y peculiar monstruo volviéndose así su mejor amigo.
+Aunque ahora vivía dentro de Franky, Cere- Bro nunca perdió su amor por las zanahorias. Usaba su ingenio y conocimiento para guiar a Franky en sus aventuras nocturnas, siempre buscando una zanahoria para recordar su vida pasada. Cere- Bro  era el cerebro detrás de cada plan, asegurando que ellos dos no solo sobrevivieran, sino que disfrutaran de cada momento juntos.
+ " filter="url(#f1)"/> <!-- Conde Nado -->
+        <image x="675" y="21" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta ReaperJr.webp" data-text="El heredero del toque está tomando clases para empezar a recolectar almas, pero por ahora solo puede de los mini porque está chiquito  " filter="url(#f1)"/> <!-- Conde Nado -->
+        <image x="775" y="803" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Condenado.webp" data-text="El conde Nado es el primo lejano del conde Drácula es vegetariano porque un murciélago de la fruta lo mordió " filter="url(#f1)"/> <!-- Conde Nado -->
+        <image x="665" y="518" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Frankie.webp" data-text="Fue creado en un laboratorio secreto por el enigmático Doctor Mortis, un científico loco que se especializaba en dar vida a lo inanimado. no era un monstruo común; estaba hecho de retazos de peluches, Su cerebro, sin embargo, pertenecía a un conejo de peluche llamado Bunnie, quien tenía un insaciable amor por las zanahorias." filter="url(#f1)"/>
+        <image x="1185" y="605" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Hugo.webp" data-text="El es Hugo el verdugo, encargado de los recortes de personal, ama su trabajo pero detesta quitar las manchas de su uniforme, su frase favorita es no pierdas la cabeza, solo tienes una." filter="url(#f1)"/>
+        <image x="942" y="440" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Brujita.webp" data-text="El mes de octubre es el mes donde el poder del dulce se apodera de esta poderosa bruja, ella cegada por el mismo lanza un poderoso hechizo que hace que tengas unas ganas de comer dulces hasta que te duela la panza y secretamente también es la causante que en este mes se regalen dulces.  " filter="url(#f1)"/>
+        <image x="922" y="378" width="35" height="35" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Angelo.webp" data-text="Es el hermano del medio el mas inteligente de los tres, es el líder de el grupo y el principal causante del trafico de abrazos de Sweet Nightmare con un color grisáceo se confunde con las sombras y las piedras del bosque, su presencia es intimidante asegurándose de que cada abrazo sea pagado con algo mas que simple gratitud: un secreto, una promesa, o incluso una parte del alma, los abrazos de Angelo son profundos y reconfortantes, como un refugio en tiempos de tormenta. " filter="url(#f1)"/>
+        <image x="900" y="394" width="35" height="35" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Bianca.webp" data-text="Es la mayor de los tres hermanos a ella le encanta comer fresas silvestres que crecen en el bosque cerca de las cuevas, tiene un pelaje blanco con finas patas que se mueven con gracia, Sus telarañas son obras de arte macabras, capturando no solo cuerpos, sino también sueños y esperanzas. Sus abrazos son suaves y envolventes, llenos de creatividad y ternura, ideales para aquellos que necesitan inspiración o consuelo" filter="url(#f1)"/>
+        <image x="950" y="395" width="35" height="35" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Marco.webp" data-text="Es el hermano menor es una araña saltarina y ágil con un pelaje negro como la noche, sus ojos brillan con un fuego inquietante y sus movimientos son tan rápidos que es casi imperceptible para la vista en las sombras de la oscuridad, marco es especialista en encontrar a los solitarios y desesperados, cuyo deseo por un abrazo es tan profundo que harían cualquier cosa por obtenerlos, siempre está lista para saltar de una rama a otra, llevando consigo la calidez de un abrazo que ilumina los rostros de quienes lo reciban" filter="url(#f1)"/>
+        <image x="750" y="408" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Hoku Koko.webp" data-text="Hoku y Koko son una linda pareja que les gusta salir a pasear muy en la noche ya que el silencio de la ciudad se calma y no hay tantas personas que los interrumpan en sus citas bajo la suave luz de la luna llena
+        " filter="url(#f1)"/>
+        <image x="573" y="202" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Spook.webp" data-text="Es el fantasma de  un gran mago del pasado, en general es muy amable y dulce pero tiene una pequeña sombra perversa que lo sigue a donde vaya, el cual asusta a los visitantes del cementerio.  " filter="url(#f1)"/>
+        <image x="614" y="592" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Samhain.webp" data-text="Nacido en el cultivo de calabazas del laboratorio del Dr Frankestein, cobraron vida por todos los experimentos que se hicieron y enterraban en el huerto, el Dr las vende como protectores de las casas y decoración ya que intimidan a los extraños, su único enemigo es el conde Nadito que el encanta su sabor y por ello genera conflictos en el Dr. Y el Conde Nado el cual le jala sus orejas " filter="url(#f1)"/>
+        <image x="620" y="683" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Joaquin.webp" data-text="Joaquin es un talentoso arlequin que le encanta esconder los calcetines y es esl cupable que solo encuentres uno. Le gusta jugar bromas pero también le encanta hacer poemas de amor y escribir rimas aunque no es muy bueno." filter="url(#f1)"/>
+        <image x="688" y="720" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Condenadito.webp" data-text="El Conde Nado ha descubierto la forma de engendrar Conde Naditos, son pequeños tímidos pero encontrarán la forma de que los ames, así les tomé toda la eternidad, le encanta las calabazas ya que su sabor les produce una pequeña obsesión " filter="url(#f1)"/>
+        <image x="898" y="839" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta El patas.webp" data-text="No se sabe cuándo apareció, pero según cuentan los habitantes es un ser de buen carácter y que te cumple todos tus deseos, pero hay que tener cuidado ya que debes leer las letras pequeñas y siempre tendrá un costo haberle pedido algo y si no le pagas te atormentará todos los días hasta que cumplas con el contrato." filter="url(#f1)"/>
+        <image x="842" y="305" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Colmillo.webp" data-text="El humano juan* siguiendo sus modas raras, en una hermosa noche se alejó a un bosque cercano a la villa sweet nigthmare a tomar un baño de luna, sin darse cuenta que entre las sombras era acechado por un Pincher con una maldición un poco curiosa.
+tarde empezó a sentir calor, su piel adolorida y un fuerte dolor en todo su cuerpo mientras se transformaba veía como su piel se llenó de pelo, poco a poco se transformó en Colmillo un hombre lobo pequeño, este tenía una fuerte alegría a la plata y era desconfiado de los desconocidos pero alegre y cariñoso en el fondo, después de eso Juan* cada luna llena como la de hoy se transforma en Colmillo y sale a buscar víctimas así que ten cuidado puedes ser el próximo
+        
+        *Los nombres han sido alterados para proteger la identidad del protagonista" filter="url(#f1)"/>
+        <image x="717" y="101" width="50" height="50" href="Sweet Nigthmare/Marcador-Skull_T.gif" class="clickable" data-image="Sweet Nigthmare/Tarjeta Reaper.webp" data-text="Reaper es la parca de este mundo, el se encarga de recolectar las almas de los muertos de este mundo, pero no todo es tristeza ya que al morir las almas reencarnan en la tierra en forma de peluches, dando una nueva vida y oportunidad de llevar felicidad a las personas." filter="url(#f1)"/>
+    </svg>
+
+    <div class="popup" id="popup">
+        <button class="close-btn" onclick="closePopup()">x</button>
+        <img id="popup-img" src="Sweet Nigthmare/Tarjeta Condenado.png" alt="Imagen Secundaria">
+        <div class="scrollable-content" id="popup-text">
+            <p></p>
+        </div>
+    </div>
+    <div class="container">
+        <input type="checkbox" id="btn-mas">
+        <div class="redes">
+            <a href="https://www.facebook.com/angelgeekplush" class="fa fa-facebook" target="_blank"></a>
+            <a href="https://www.instagram.com/talesofangelgeek/" class="fa fa-instagram" target="_blank"></a>
+            <a href="https://wa.me/message/74L5JB2GZNJIB1" class="fa fa-whatsapp" target="_blank"></a>
+            <a href="https://wa.me/c/573158494391" class="fa-solid fa-cart-shopping" target="_blank"></a>
+        </div>
+        <div class="btn-mas">
+            <label for="btn-mas" class="fa fa-plus"></label>
+        </div>
+    </div>
+    <script>
+        function goBack() {
+        window.history.back();
+    }
+        document.querySelectorAll('.clickable').forEach(function(element) {
+            element.addEventListener('click', function() {
+                const imgSrc = this.getAttribute('data-image');
+                const textContent = this.getAttribute('data-text');
+                const popup = document.getElementById('popup');
+                const popupImg = document.getElementById('popup-img');
+                const popupText = document.getElementById('popup-text').querySelector('p');
+                
+                popupImg.src = imgSrc;
+                popupText.textContent = textContent;
+                popup.style.display = 'block';
+            });
+        });
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        document.body.addEventListener('click', function(event) {
+            const popup = document.getElementById('popup');
+            if (event.target.closest('.clickable') === null && event.target.closest('.popup') === null) {
+                popup.style.display = 'none';
+            }
+        });
+
+        document.body.addEventListener('touchstart', function(event) {
+            const popup = document.getElementById('popup');
+            if (event.target.closest('.clickable') === null && event.target.closest('.popup') === null) {
+                popup.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
